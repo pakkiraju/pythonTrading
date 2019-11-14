@@ -12,12 +12,16 @@ driver.get("https://www.earningswhispers.com/calendar")
 
 earningsList = driver.find_element_by_id('epscalendar')
 dataOutput = earningsList.text
-fileName = 'earnings_{}.csv'.format(date.today())
+
+if datetime.now().strftime("%H%M%S") >= "090000":
+    fileName = 'AMC_earnings_{}'.format(date.today())
+elif datetime.now().strftime("%H%M%S") < "090000":
+    fileName = 'BMO_earnings_{}'.format(date.today())
 
 with open(fileName + ".csv", mode='w') as csv_file:
     writer = csv.writer(csv_file)
     finalOutput = re.sub(r"Beat\nMeet\nMiss", "\n", dataOutput)
-    writer.writerow(finalOutput)
+    writer.writerow([finalOutput])
 
 print(finalOutput)
 driver.close()
