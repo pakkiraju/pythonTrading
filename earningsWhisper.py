@@ -21,6 +21,7 @@ elif datetime.now().strftime("%H%M%S") < "090000":
 with open(fileName + ".csv", mode='w') as csv_file:
     writer = csv.writer(csv_file)
     finalOutput = re.sub(r"Beat\nMeet\nMiss", "\n", dataOutput)
+    # finalOutput = re.sub(r"Company\nEstimate\nActual\nGrowth\nGuidance\nScore\nSurprise\n", "\n", dataOutput)
     writer.writerow([finalOutput])
 
 print(finalOutput)
