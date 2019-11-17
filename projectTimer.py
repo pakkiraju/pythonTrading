@@ -1,4 +1,4 @@
 import time
 st=time.time()
-import yahooFinanceVersion1_pandas
+import earningsToGoogleDrive
 print("----%.2f----"%(time.time()-st))
