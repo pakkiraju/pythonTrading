@@ -1,4 +1,4 @@
 import time
 st=time.time()
-import earningsToGoogleDrive
+import yahooFinanceToCSV
 print("----%.2f----"%(time.time()-st))

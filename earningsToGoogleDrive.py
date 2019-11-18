@@ -28,8 +28,7 @@ print('Created file %s with mimeType %s with id %s' % (file1['title'], file1['mi
 
 
 emails = [
-    'pradhamesh007@gmail.com',
-    'akkiraju.pradhamesh@gmail.com'
+    'kwc450@gmail.com',
 ]
 
 for email in emails:

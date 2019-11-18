@@ -4,7 +4,7 @@ import pandas as pd
 from discord import channel
 from discord import client
 
-TOKEN = 'NjQ1OTAxNjE0MTQ5Nzk1ODQw.XdJVxw.XCA-3RdWZydXqopw8T4w7idFa2Q'
+TOKEN = 'NjQ1OTAxNjE0MTQ5Nzk1ODQw.XdJsVQ.CVXfWwlCCVZtWoidjKv_5rKDtJs'
 
 client = discord.Client()
 
