@@ -23,7 +23,7 @@ for file in fileList:
 file1 = drive.CreateFile({"mimeType": "text/csv", "parents": [{"kind": "drive#fileLink", "id": fileID}]})
 file1.SetContentFile("earnings_{}.csv".format(date.today()))
 file1.Upload() # Upload the file.
-print '\n'
+print ('\n')
 print('Created file %s with mimeType %s with id %s' % (file1['title'], file1['mimeType'], file1['id']))
 
 
@@ -39,4 +39,4 @@ for email in emails:
         'role': 'reader'
     }
     test = file1.InsertPermission(new_permission)
-    print "The file has been shared to ", email
+    print ("The file has been shared to ", email)
