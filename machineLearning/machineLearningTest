@@ -1,24 +1,63 @@
-# make predictions
-from pandas import read_csv
+import quandl
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.svm import SVR
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import accuracy_score
-from sklearn.svm import SVC
-# Load dataset
-url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
-names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
-dataset = read_csv(url, names=names)
-# Split-out validation dataset
-array = dataset.values
-X = array[:,0:4]
-y = array[:,4]
-X_train, X_validation, Y_train, Y_validation = train_test_split(X, y, test_size=0.20, random_state=1)
-# Make predictions on validation dataset
-model = SVC(gamma='auto')
-model.fit(X_train, Y_train)
-predictions = model.predict(X_validation)
-# Evaluate predictions
-print(accuracy_score(Y_validation, predictions))
-print(confusion_matrix(Y_validation, predictions))
-print(classification_report(Y_validation, predictions))
+
+# Get Stock Data
+df = quandl.get("WIKI/AMZN")
+
+# Get the Adjusted Close Price
+df = df[['Adj. Close']]
+
+# Prediction
+
+# Variable for predicting 'n' days out into the future
+forcast_out = 30
+# Create another column (the target or dependent variable) shifted 'n' units up
+df['Prediction'] = df[['Adj. Close']].shift(-forcast_out)
+
+### Create the independed data set (x) ###
+# Convert the dataframe to a numpy array
+X = np.array(df.drop(['Prediction'], 1))
+# Remove the last 'n' rows
+X = X[:-forcast_out]
+
+### Create the dependent data set (y) ###
+#Converet the dataframe to a numpy array (All of the values including the NaN's)
+y = np.array(df['Prediction'])
+# Get all the y values except the lant 'n' rows
+y = y[:-forcast_out]
+
+# Split the data into 80% training and 20% testing
+x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Create and train the Support Vector Machine (Regressor)
+svr_rbf = SVR(kernel='rbf', C=1e3, gamma=0.1)
+svr_rbf.fit(x_train, y_train)
+
+# Testing Model: Score returns the coefficient of determination R^2 of the prediction.
+# The best possible score is 1.0
+svm_confidence = svr_rbf.score(x_test, y_test)
+print("svm confidence: ", svm_confidence)
+
+# Create and train the Linear Regression Model
+lr = LinearRegression()
+# Train the model
+lr.fit(x_train, y_train)
+
+# Testing Model: Score returns the coefficient of determination R^2 of the prediction.
+# The best possible score is 1.0
+lr_confidence = lr.score(x_test, y_test)
+print("lr confidence: ", lr_confidence)
+
+# Set x_forceast equals to the last 30 rows of the original data set from  Adj. Close column
+x_forecast = np.array(df.drop(['Prediction'], 1))[-forcast_out:]
+
+# Print the linear regression model prediction for the next 'n' days
+lr_prediction = lr.predict(x_forecast)
+print(lr_prediction)
+
+# Print the support vector regressor model prediction for the next 'n' days
+svm_prediction = svr_rbf.predict(x_forecast)
+print(svm_prediction)
