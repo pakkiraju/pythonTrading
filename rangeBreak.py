@@ -4,6 +4,8 @@
 ### Project Name    : rangeBreak                                            ###
 ### Description     : This is a target, share, loss calculator              ###
 ###                   based on a range break that is specified by the user  ###
+### Version Code    : 1.0.0                                                 ###
+### Last Updated    : December 23/2019                                      ###
 ###############################################################################
 
 # Imports
