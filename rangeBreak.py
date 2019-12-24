@@ -1,5 +1,15 @@
+###############################################################################
+### Creator         : Pradhamesh Akkiraju                                   ###
+### Date            : December 23/2019                                      ###
+### Project Name    : rangeBreak                                            ###
+### Description     : This is a target, share, loss calculator              ###
+###                   based on a range break that is specified by the user  ###
+###############################################################################
+
+# Imports
 import tkinter as tk
 
+# The fields to display
 fields = ('Risk', 'Range High', 'Range Low', 'Entry Price', 'Stop Price', 'T1', 'S1', 'P1', 'T2', 'S2', 'P2', 'Total Profit', 'Total Shares', 'Total Risk', 'R2R', 'Position Value')
 
 def shortCalc(entries):
@@ -19,12 +29,12 @@ def shortCalc(entries):
     entries['Entry Price'].insert(0, shortEntry)
 
     #position value calc
-    positionValue = shortEntry * shortShareSize
+    positionValue = round(shortEntry * shortShareSize, 2)
     print("Position Value = ", positionValue)
     entries['Position Value'].delete(0, tk.END)
     entries['Position Value'].insert(0, positionValue)
 
-    totalShortRisk = shortShareSize*(rangeHigh-shortEntry)
+    totalShortRisk = round(shortShareSize*(rangeHigh-shortEntry), 2)
     print("Total Risk Short = ", totalShortRisk)
     entries['Total Risk'].delete(0, tk.END)
     entries['Total Risk'].insert(0, totalShortRisk)
@@ -53,8 +63,8 @@ def shortCalc(entries):
     entries['S1'].insert(0, exitShortSizeOne)
     entries['S2'].insert(0, exitShortSizeTwo)
 
-    shortProfitOne = (shortEntry - shortTargetOne) * exitShortSizeOne
-    shortProfitTwo = (shortEntry - shortTargetTwo) * exitShortSizeTwo
+    shortProfitOne = round((shortEntry - shortTargetOne) * exitShortSizeOne, 2)
+    shortProfitTwo = round((shortEntry - shortTargetTwo) * exitShortSizeTwo, 2)
     print("Profit on first Target = ", shortProfitOne)
     print("Profit on second Target = ", shortProfitTwo)
     entries['P1'].delete(0, tk.END)
@@ -62,13 +72,13 @@ def shortCalc(entries):
     entries['P1'].insert(0, shortProfitOne)
     entries['P2'].insert(0, shortProfitTwo)
 
-    totalShortProfit = shortProfitOne + shortProfitTwo
+    totalShortProfit = round(shortProfitOne + shortProfitTwo, 2)
     print("Total Short Profit = ", totalShortProfit)
     entries['Total Profit'].delete(0, tk.END)
     entries['Total Profit'].insert(0, totalShortProfit)
 
 
-    shortRisk2Reward = totalShortProfit/totalShortRisk
+    shortRisk2Reward = round(totalShortProfit/totalShortRisk, 2)
     print("Short R2R = ", shortRisk2Reward)
     entries['R2R'].delete(0, tk.END)
     entries['R2R'].insert(0, shortRisk2Reward)
@@ -92,12 +102,12 @@ def longCalc(entries):
     entries['Entry Price'].insert(0, longEntry)
 
     # position value calc
-    positionValue = longEntry * longShareSize
+    positionValue = round(longEntry * longShareSize, 2)
     print("Position Value = ", positionValue)
     entries['Position Value'].delete(0, tk.END)
     entries['Position Value'].insert(0, positionValue)
 
-    totalLongRisk = longShareSize * (longEntry - rangeLow)
+    totalLongRisk = round(longShareSize * (longEntry - rangeLow), 2)
     print("Total Risk Long = ", totalLongRisk)
     entries['Total Risk'].delete(0, tk.END)
     entries['Total Risk'].insert(0, totalLongRisk)
@@ -125,8 +135,8 @@ def longCalc(entries):
     entries['S1'].insert(0, exitLongSizeOne)
     entries['S2'].insert(0, exitLongSizeTwo)
 
-    longProfitOne = (longTargetOne - longEntry) * exitLongSizeOne
-    longProfitTwo = (longTargetTwo - longEntry) * exitLongSizeTwo
+    longProfitOne = round((longTargetOne - longEntry) * exitLongSizeOne, 2)
+    longProfitTwo = round((longTargetTwo - longEntry) * exitLongSizeTwo, 2)
     print("Profit on first Target = ", longProfitOne)
     print("Profit on second Target = ", longProfitTwo)
     entries['P1'].delete(0, tk.END)
@@ -134,12 +144,12 @@ def longCalc(entries):
     entries['P1'].insert(0, longProfitOne)
     entries['P2'].insert(0, longProfitTwo)
 
-    totalLongProfit = longProfitOne + longProfitTwo
+    totalLongProfit = round(longProfitOne + longProfitTwo, 2)
     print("Total Long Profit = ", totalLongProfit)
     entries['Total Profit'].delete(0, tk.END)
     entries['Total Profit'].insert(0, totalLongProfit)
 
-    longRisk2Reward = totalLongProfit / totalLongRisk
+    longRisk2Reward = round(totalLongProfit / totalLongRisk, 2)
     print("Long R2R = ", longRisk2Reward)
     entries['R2R'].delete(0, tk.END)
     entries['R2R'].insert(0, longRisk2Reward)
@@ -157,21 +167,19 @@ def makeform(root, fields):
                  pady=5)
         lab.pack(side=tk.LEFT)
         ent.pack(side=tk.RIGHT,
-                 expand=tk.YES,
+                 expand=tk.NO,
                  fill=tk.X)
         entries[field] = ent
     return entries
 
 if __name__ == '__main__':
     root = tk.Tk()
-    root.geometry("500x600")
-    root.title("Range Break Calculator by Prad")
+    root.geometry("300x600")
+    root.title("Range Break Calculator")
     ents = makeform(root, fields)
-    b1 = tk.Button(root, text='Long',
-           command=(lambda e=ents: longCalc(e)))
+    b1 = tk.Button(root, text='Long', command=(lambda e=ents: longCalc(e)))
     b1.pack(side=tk.LEFT, padx=5, pady=5)
-    b2 = tk.Button(root, text='Short',
-           command=(lambda e=ents: shortCalc(e)))
+    b2 = tk.Button(root, text='Short', command=(lambda e=ents: shortCalc(e)))
     b2.pack(side=tk.LEFT, padx=5, pady=5)
     b3 = tk.Button(root, text='Quit', command=root.quit)
     b3.pack(side=tk.LEFT, padx=5, pady=5)
