@@ -156,7 +156,7 @@ def shortCalc():
 # Creates the GUI Window
 window = Tk()
 # Declares the window box size
-window.geometry("300x100")
+window.geometry("200x100")
 # Set GUI Title
 window.title("Range Break V.2.0.0")
 
@@ -176,7 +176,6 @@ rangeLowInput = Entry(window, textvariable=rangeLow).grid(row=2, column=1)
 # Long / Short / Quit buttons
 longButton = Button(window, text="Long", command=longCalc).grid(row=3, column=0)
 shortButton = Button(window, text="Short", command=shortCalc).grid(row=3, column=1)
-quitButton = Button(window, text="Quit", command=window.quit).grid(row=3, column=2)
 
 # Runs the GUI loop
 window.mainloop()
