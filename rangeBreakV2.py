@@ -114,6 +114,7 @@ Label(window, text="Entry Price").grid(row=9, column=0)
 Label(window, text="Stop Price").grid(row=9, column=1)
 Label(window, text="Total Risk").grid(row=9, column=2)
 
+# Long / Short / Quit buttons
 longButton = Button(window, text="Long", command=longCalc).grid(row=3, column=0)
 shortButton = Button(window, text="Short", command=shortCalc).grid(row=3, column=1)
 quitButton = Button(window, text="Quit", command=window.quit).grid(row=3, column=2)
