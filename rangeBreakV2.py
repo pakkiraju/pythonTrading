@@ -17,6 +17,7 @@ def longCalc():
     root = Toplevel(window)
     # Setting the pop-up window title
     root.title("LONG")
+    root.iconbitmap("D:\Downloads\Visualpharm-Must-Have-Stock-Index-Up.ico")
 
     # Setting Text Labels to form tables (overall formatting of the output)
     Label(root, text="# of Shares").grid(row=4, column=0)
@@ -88,6 +89,7 @@ def shortCalc():
     root = Toplevel(window)
     # Setting the pop-up window title
     root.title("SHORT")
+    root.iconbitmap("D:\Downloads\Visualpharm-Must-Have-Stock-Index-Down.ico")
 
     # Setting Text Labels to form tables (overall formatting of the output)
     Label(root, text="# of Shares").grid(row=4, column=0)
@@ -159,6 +161,7 @@ window = Tk()
 window.geometry("200x100")
 # Set GUI Title
 window.title("Range Break V.2.0.0")
+window.iconbitmap("D:\Downloads\Iynque-Ios7-Style-Stocks.ico")
 
 # Setting Labels and Giving then Input Boxes to get data from user
 Label(window, text="Enter Risk").grid(row=0, column=0)
