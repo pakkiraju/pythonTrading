@@ -30,4 +30,4 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=False , icon='D:\\Downloads\\Iynque-Ios7-Style-Stocks.ico')
+          console=False )
