@@ -1,4 +1,4 @@
 import time
 st=time.time()
-import yahooFinanceVersion1_pandas
+import yahooFinanceToCSV
 print("----%.2f----"%(time.time()-st))
