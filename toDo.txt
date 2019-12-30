@@ -1,0 +1,7 @@
+To Do
+
+1.) Integrate the earnings bot with discord
+2.) Finish the tradingview bot and integrate it with discord
+3.) Machine Learning test pilot
+4.) Make folders for separate projects and add fix their directory paths in respective code
+5.) Optimize code
