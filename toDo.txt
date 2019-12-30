@@ -1,7 +1,12 @@
 To Do
 
 1.) Integrate the earnings bot with discord
-2.) Finish the tradingview bot and integrate it with discord
+2.) Finish the tradingview bot and integrate it with discord (blondie said something about some snipet through api or something ask him again)
 3.) Machine Learning test pilot
-4.) Make folders for separate projects and add fix their directory paths in respective code
+4.) Fix their directory paths in respective code since you made separate folders for each project
+5.) Basket Order UI
+6.) FDA Catalyst / Earnings Calendar UI
+7.) Imbalance backtester
+8.) Gus's tape reader to UI
+9.) Auto Journal
 5.) Optimize code
