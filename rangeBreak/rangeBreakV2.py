@@ -16,7 +16,9 @@ def longCalc():
     # Setting 'root' as the pop-up window name which happens within the 'window' which is the main GUI
     root = Toplevel(window)
     # Setting the pop-up window title
-    root.title("LONG")
+    tickerText = ticker.get()
+    root.title("↑ " + tickerText + " LONG ↑")
+    root.geometry("300x150")
     # Setting Pop-up window Icon
     # root.iconbitmap("D:\Downloads\Visualpharm-Must-Have-Stock-Index-Up.ico")
 
@@ -89,7 +91,9 @@ def shortCalc():
     # Setting 'root' as the pop-up window name which happens within the 'window' which is the main GUI
     root = Toplevel(window)
     # Setting the pop-up window title
-    root.title("SHORT")
+    tickerText = ticker.get()
+    root.title("↓ " + tickerText + " SHORT ↓")
+    root.geometry("300x150")
     # Setting Pop-up window Icon
     # root.iconbitmap("D:\Downloads\Visualpharm-Must-Have-Stock-Index-Down.ico")
 
@@ -160,7 +164,7 @@ def shortCalc():
 # Creates the GUI Window
 window = Tk()
 # Declares the window box size
-window.geometry("200x100")
+window.geometry("200x120")
 # Set GUI Title
 window.title("Range Break V.2.0.0")
 # Setting Window Icon
@@ -179,9 +183,13 @@ Label(window, text="Enter Range Low").grid(row=2, column=0)
 rangeLow = DoubleVar()
 rangeLowInput = Entry(window, textvariable=rangeLow).grid(row=2, column=1)
 
+Label(window, text="Enter Ticker").grid(row=3, column=0)
+ticker = StringVar()
+tickerInput = Entry(window, textvariable=ticker).grid(row=3, column=1)
+
 # Long / Short / Quit buttons
-longButton = Button(window, text="Long", command=longCalc).grid(row=3, column=0)
-shortButton = Button(window, text="Short", command=shortCalc).grid(row=3, column=1)
+longButton = Button(window, text="Long", command=longCalc).grid(row=4, column=0)
+shortButton = Button(window, text="Short", command=shortCalc).grid(row=4, column=1)
 
 # Runs the GUI loop
 window.mainloop()
