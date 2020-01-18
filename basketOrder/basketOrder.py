@@ -4,7 +4,7 @@
 ### Project Name    : basketOrder.py                                        ###
 ### Description     : This program is used to help calculate the            ###
 ###                     appropriate basket size for EU/TSX/NYSE MOC Trades  ###
-### Last Edited     : December 29/2019                                      ###
+### Last Edited     : January 18/2020                                       ###
 ###############################################################################
 
 # Imports
