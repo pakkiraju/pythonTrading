@@ -9,6 +9,10 @@ def ScrolledFrame(parent):
     bbox = canvas.bbox('all')
     canvas.config(width=bbox[2], scrollregion=bbox)
 
+  def on_mouse_wheel(event):
+    # better checking whether event happens inside frame
+    canvas.yview_scroll(event.delta//-30, 'units')
+
   # note: Canvas is the outer container
   canvas = tkinter.Canvas(parent)
   # *** modify the below line to suit your layout manager
@@ -23,11 +27,15 @@ def ScrolledFrame(parent):
   frame = tkinter.Frame(canvas)
   canvas.create_window(0, 0, window=frame, anchor='nw')
   frame.bind('<Configure>', on_resize)
+  # use bind_all() to make sure mouse wheel events can be triggered
+  # even the canvas is filled with labels on top
+  canvas.bind_all('<MouseWheel>', on_mouse_wheel)
 
   return frame
 
 
 root = Tk()
+root.title("Today's Earnings Calendar")
 frame = ScrolledFrame(root)
 # open file
 with open(r'earnings_{}.csv'.format(date.today()), newline = "") as file:
