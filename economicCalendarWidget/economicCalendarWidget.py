@@ -1,7 +1,7 @@
 from tkinter.tix import *
 import csv
 from datetime import date
-import yahooFinanceToCSV
+import economicCalendarToCSV
 
 def ScrolledFrame(parent):
   def on_resize(event):
@@ -34,10 +34,10 @@ def ScrolledFrame(parent):
 
 
 root = Tk()
-root.title("Today's Earnings Calendar")
+root.title("Today's Economic Calendar")
 frame = ScrolledFrame(root)
 # open file
-with open(r'earnings_{}.csv'.format(date.today()), newline = "") as file:
+with open(r'economicCalendar_{}.csv'.format(date.today()), newline = "") as file:
    reader = csv.reader(file)
 
    # r and c tell us where to grid the labels
