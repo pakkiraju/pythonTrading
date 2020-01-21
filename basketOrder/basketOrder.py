@@ -9,7 +9,7 @@
 
 # Imports
 import math
-
+import os
 import requests
 from tkinter import *
 from bs4 import BeautifulSoup
@@ -131,6 +131,8 @@ def calculate():
 window = Tk()
 window.geometry("500x500")
 window.title("Basket Order Calculator")
+path = os.getcwd()
+window.iconbitmap(path+"\ICONS\BASKET.ico")
 
 Label(window, text="Enter Buying Power").grid(row=0, column=0, padx=5, pady=5)
 buyingPower = DoubleVar()

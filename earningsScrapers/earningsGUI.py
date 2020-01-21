@@ -1,6 +1,7 @@
 from tkinter.tix import *
 import csv
 from datetime import date
+import os
 import yahooFinanceToCSV
 
 def ScrolledFrame(parent):
@@ -34,7 +35,9 @@ def ScrolledFrame(parent):
 
 
 root = Tk()
-root.title("Today's Earnings Calendar")
+root.title("Today's Earnings Calendar via Yahoo!")
+path = os.getcwd()
+root.iconbitmap(path+"\ICONS\Sicons-Basic-Round-Social-Yahoo.ico")
 frame = ScrolledFrame(root)
 # open file
 with open(r'earnings_{}.csv'.format(date.today()), newline = "") as file:

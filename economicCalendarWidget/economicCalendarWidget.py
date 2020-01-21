@@ -2,6 +2,7 @@ from tkinter.tix import *
 import csv
 from datetime import date
 import economicCalendarToCSV
+import os
 
 def ScrolledFrame(parent):
   def on_resize(event):
@@ -34,7 +35,9 @@ def ScrolledFrame(parent):
 
 
 root = Tk()
-root.title("Today's Economic Calendar")
+root.title("Today's Economic Calendar via Yahoo!")
+path = os.getcwd()
+root.iconbitmap(path+"\ICONS\Sicons-Basic-Round-Social-Yahoo.ico")
 frame = ScrolledFrame(root)
 # open file
 with open(r'economicCalendar_{}.csv'.format(date.today()), newline = "") as file:
