@@ -10,6 +10,7 @@
 
 # Imports
 from tkinter import *
+import os
 
 # Create a function for the Long side that contains all the formulas
 def longCalc():
@@ -17,10 +18,11 @@ def longCalc():
     root = Toplevel(window)
     # Setting the pop-up window title
     tickerText = ticker.get()
-    root.title("↑ " + tickerText + " LONG ↑")
+    root.title(tickerText)
     root.geometry("300x150")
     # Setting Pop-up window Icon
-    # root.iconbitmap("D:\Downloads\Visualpharm-Must-Have-Stock-Index-Up.ico")
+    path = os.getcwd()
+    root.iconbitmap(path+"\ICONS\Visualpharm-Must-Have-Stock-Index-Up.ico")
 
     # Setting Text Labels to form tables (overall formatting of the output)
     Label(root, text="# of Shares").grid(row=4, column=0)
@@ -92,10 +94,11 @@ def shortCalc():
     root = Toplevel(window)
     # Setting the pop-up window title
     tickerText = ticker.get()
-    root.title("↓ " + tickerText + " SHORT ↓")
+    root.title(tickerText)
     root.geometry("300x150")
     # Setting Pop-up window Icon
-    # root.iconbitmap("D:\Downloads\Visualpharm-Must-Have-Stock-Index-Down.ico")
+    path = os.getcwd()
+    root.iconbitmap(path+"\ICONS\Visualpharm-Must-Have-Stock-Index-Down.ico")
 
     # Setting Text Labels to form tables (overall formatting of the output)
     Label(root, text="# of Shares").grid(row=4, column=0)
@@ -168,7 +171,8 @@ window.geometry("200x120")
 # Set GUI Title
 window.title("Range Break V.2.0.0")
 # Setting Window Icon
-# window.iconbitmap("D:\Downloads\Iynque-Ios7-Style-Stocks.ico")
+path = os.getcwd()
+window.iconbitmap(path+"\ICONS\Iynque-Ios7-Style-Stocks.ico")
 
 # Setting Labels and Giving then Input Boxes to get data from user
 Label(window, text="Enter Risk").grid(row=0, column=0)

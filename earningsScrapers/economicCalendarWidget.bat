@@ -1,0 +1,2 @@
+cd economicCalendarWidget
+py economicCalendarWidget.py
