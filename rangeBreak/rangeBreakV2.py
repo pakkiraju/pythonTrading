@@ -58,7 +58,7 @@ def longCalc():
     Label(root, text=totalLongRisk).grid(row=10, column=2)
 
     # Stop Calculation
-    longStop = longRangeLow
+    longStop = longRangeLow-0.01
     Label(root, text=longStop).grid(row=10, column=1)
 
     # Target One and Two Calculation
@@ -134,7 +134,7 @@ def shortCalc():
     Label(root, text=totalShortRisk).grid(row=10, column=2)
 
     # Stop Calculation
-    shortStop = shortRangeHigh
+    shortStop = shortRangeHigh+0.01
     Label(root, text=shortStop).grid(row=10, column=1)
 
     # Target One and Two Calculation
