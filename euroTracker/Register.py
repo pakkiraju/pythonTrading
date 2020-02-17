@@ -1,13 +1,7 @@
+import threading
 import urllib.request
 import urllib.response
-import time
-import os
-import threading
-from twisted.internet import reactor
-from twisted.internet.protocol import DatagramProtocol
-import pause
-import shutil
-from datetime import datetime
+
 
 class Register:
 

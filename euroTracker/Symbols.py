@@ -1,15 +1,13 @@
+import os
+import shutil
+import threading
+import time
 import urllib.request
 import urllib.response
-import time
-import os
-import threading
-import unittest
-from twisted.internet import reactor
-from twisted.internet.protocol import DatagramProtocol
-import pause
-import shutil
 from datetime import datetime
-from pathlib import Path
+
+import pause
+
 
 class Symbols:
 
